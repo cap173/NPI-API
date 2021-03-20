@@ -10,6 +10,7 @@ async function makeAPICall(search_params) {
 		const data = res.data;
 
 		if (data["results"] != undefined) {
+			// If there is data, print it out
 			console.log("\n*****RESULTS*****");
 			console.log(JSON.stringify(data["results"], undefined, 2));
 			console.log("Results Count: " + data["result_count"]);
@@ -26,6 +27,7 @@ async function main() {
 	console.log("Hello! With thise program you can call the NPI Registry Api.");
 
 	while (true) {
+		// Collect search fields for the API call
 		var response = prompt("Would you like to make a search? (yes/no) ");
 		if (response == "yes") {
 			search_params = {
@@ -38,6 +40,7 @@ async function main() {
 				postalCode: prompt("Postal Code: "),
 				countryCode: prompt("Country Code: "),
 			};
+
 			// Set default search result limit to 10 if one is not given
 			if (search_params["limit"] == "") {
 				search_params["limit"] = "10";
